@@ -41,7 +41,7 @@
   .chip b{color:var(--gold)}
 
   /* ---- quick links ---- */
-  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0 8px}
+  .quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:34px 0 8px}
   .qcard{display:flex;flex-direction:column;gap:6px;background:linear-gradient(160deg,var(--card),var(--card2));
     border:1px solid var(--line);border-radius:14px;padding:16px 15px;transition:.18s;text-decoration:none}
   .qcard:hover{transform:translateY(-3px);border-color:var(--gold);text-decoration:none;
@@ -101,11 +101,31 @@
   .warn{max-width:1080px;margin:0 auto;padding:14px 18px;background:rgba(200,32,63,.10);
     border:1px solid rgba(255,61,154,.30);border-radius:12px;color:#ffd7e4;font-size:12.5px}
 
+  /* main/sub tag */
+  .tag{display:inline-block;font-size:11px;font-weight:800;border-radius:6px;padding:3px 9px;letter-spacing:.04em;vertical-align:middle}
+  .tag.main{background:linear-gradient(180deg,#fff2c0,#e0a92e);color:#0b0510}
+  .tag.sub{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+
+  /* value callout */
+  .value-callout{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+    background:linear-gradient(160deg,rgba(245,197,66,.12),rgba(138,92,255,.10));
+    border:1px solid var(--gold);border-radius:14px;padding:18px 22px;margin:0 0 22px}
+  .value-callout .from{color:var(--muted);font-size:14px}
+  .value-callout .from s{opacity:.8}
+  .value-callout .arrow{color:var(--gold);font-size:22px;font-weight:800;line-height:1}
+  .value-callout .to{color:var(--text);font-size:clamp(15px,2.5vw,19px);font-weight:800}
+  .value-callout .to b{color:var(--gold)}
+
+  /* bodylab banner grid */
+  .bl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .bl-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+  .bl-note{font-size:12px;color:var(--muted);margin-top:10px}
+
   @media(max-width:840px){
-    .quick{grid-template-columns:repeat(2,1fr)}
     .lp-grid{grid-template-columns:repeat(2,1fr)}
     .ban-grid{grid-template-columns:1fr}
     .two,.res{grid-template-columns:1fr}
+    .bl-grid{grid-template-columns:repeat(2,1fr)}
   }
 </style>
 </head>
@@ -115,7 +135,7 @@
 <header>
   <span class="kicker">エヌイチ ／ 直個別 2026年7月上旬</span>
   <h1><span class="g">SNS案件</span>まるごと公開<br>× AI案件獲得サポート</h1>
-  <p class="sub">7/9-10 直個別（AIコンサル実演）向け 制作物まとめ ― サイト・広告バナー・サムネッシー</p>
+  <p class="sub">7/9-10 直個別（AIコンサル実演）向け 制作物まとめ ― サイト・広告バナー・実案件（メイン：サムネッシー／サブ：BODY LAB）</p>
   <div class="meta-row">
     <span class="chip">開催 <b>7/9(木)・7/10(金)</b> 2日間限定</span>
     <span class="chip">締切 <b>7/10(金) 23:59</b></span>
@@ -140,6 +160,12 @@
       <span class="ic">🖼️</span>
       <span class="t">サムネッシー</span>
       <span class="d">メイン案件・YouTubeサムネ</span>
+      <span class="go">見る ↓</span>
+    </a>
+    <a class="qcard" href="#bodylab">
+      <span class="ic">💪</span>
+      <span class="t">BODY LAB</span>
+      <span class="d">サブ案件・バナー/LP量産</span>
       <span class="go">見る ↓</span>
     </a>
     <a class="qcard" href="#folder">
@@ -216,8 +242,8 @@
 <!-- ============ 3. サムネッシー ============ -->
 <div class="wrap">
 <section id="samunessy">
-  <div class="sec-head"><span class="sec-no">03</span><h2>サムネッシー（メイン案件・YouTubeサムネ自動生成・50万円）</h2></div>
-  <p class="sec-lead">今回の直個別で<b style="color:var(--gold)">主役に据えるメイン案件</b>。「YouTubeのサムネ生成をAIで自動化＝50万円の案件」の中身。AIPEX発・住友駿仁さん作のサムネ自動制作システム。（LP・広告バナー制作の1時間10万円案件は<b>サブ案件</b>という位置づけ）</p>
+  <div class="sec-head"><span class="sec-no">03</span><h2>サムネッシー（YouTubeサムネ自動生成・50万円）<span class="tag main">メイン案件</span></h2></div>
+  <p class="sec-lead">位置づけは<b style="color:var(--gold)">メイン案件</b>＝「YouTubeのサムネ生成をAIで自動化（50万円）」。AIPEX発・住友駿仁さん作のサムネ自動制作システム。ただし仕組み・裏側の解説が中心で、社内学習データも絡むため<b>実演では見せにくい</b>。デモで見せやすいのは下の <a href="#bodylab">BODY LAB（サブ案件）</a>。</p>
 
   <div class="two">
     <div class="card">
@@ -238,10 +264,49 @@
 </section>
 </div>
 
-<!-- ============ 4. フォルダ・リンク ============ -->
+<!-- ============ 4. サブ案件 BODY LAB ============ -->
+<div class="wrap">
+<section id="bodylab">
+  <div class="sec-head"><span class="sec-no">04</span><h2>BODY LAB — 広告バナー・LPをAIで量産 <span class="tag sub">サブ案件</span></h2></div>
+  <p class="sec-lead">中目黒のパーソナルジム「BODY LAB」の広告一式をAIで制作した実例。実演で<b style="color:var(--gold)">一番見せやすいのがこれ</b>（メインのサムネッシーは仕組み中心で見せにくいため）。</p>
+
+  <div class="value-callout">
+    <span class="from">これまで：バナー1枚に <s>約5万円</s>・数日がかり</span>
+    <span class="arrow">→</span>
+    <span class="to">いまAIなら：<b>1時間で30枚</b>、さらに <b>LPまで</b>完成</span>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <h3>① 広告バナー（全37枚から抜粋）</h3>
+    <p style="font-size:13px;color:var(--muted);margin:2px 0 14px">訴求・色・人物・縦横比を変えて短時間で量産。</p>
+    <div class="bl-grid">
+      <img src="assets/bodylab/b1.jpg" alt="BODY LABバナー 没入ヒーロー" loading="lazy">
+      <img src="assets/bodylab/b2.jpg" alt="BODY LABバナー 数字インパクト" loading="lazy">
+      <img src="assets/bodylab/b3.jpg" alt="BODY LABバナー くびれ" loading="lazy">
+      <img src="assets/bodylab/b4.jpg" alt="BODY LABバナー 2ヶ月" loading="lazy">
+      <img src="assets/bodylab/b5.jpg" alt="BODY LABバナー 雑誌表紙" loading="lazy">
+      <img src="assets/bodylab/b6.jpg" alt="BODY LABバナー 三日坊主" loading="lazy">
+      <img src="assets/bodylab/b7.jpg" alt="BODY LABバナー 無料体験" loading="lazy">
+      <img src="assets/bodylab/b8.jpg" alt="BODY LABバナー 痛み訴求" loading="lazy">
+    </div>
+    <a class="btn ghost" href="https://drive.google.com/drive/folders/1C23Yg1F46kXt7hpmOF4wHWJMHoEQiBCE" target="_blank" rel="noopener" style="margin-top:16px">📁 バナー全種フォルダ（Drive）を開く</a>
+  </div>
+
+  <div class="card">
+    <h3>② ランディングページ（LP）</h3>
+    <p style="font-size:13px;color:var(--muted);margin:2px 0 14px">同じ世界観でLPまで制作。そのまま公開中。</p>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+      <img src="assets/bodylab/lp-hero.jpg" alt="BODY LAB LP ファーストビュー" style="width:300px;max-width:100%;border-radius:12px;border:1px solid var(--line)">
+      <a class="btn" href="https://n1-official.github.io/bodylab-lp/" target="_blank" rel="noopener">BODY LAB のLPを開く ▶</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ 5. フォルダ・リンク ============ -->
 <div class="wrap">
 <section id="folder">
-  <div class="sec-head"><span class="sec-no">04</span><h2>フォルダ・リンク集</h2></div>
+  <div class="sec-head"><span class="sec-no">05</span><h2>フォルダ・リンク集</h2></div>
   <p class="sec-lead">原本・配信テキスト・予約LP・ガイドへの入口。Driveとスプレッドシートはアクセス権のあるチームメンバーのみ開けます。</p>
 
   <div class="res">
@@ -264,6 +329,16 @@
       <span class="ic">🖼️</span>
       <span><span class="t">サムネッシー 営業ガイド</span>
       <span class="d">GitHub Pages｜50万円案件の仕組み解説（社内共有用）</span></span>
+    </a>
+    <a href="https://n1-official.github.io/bodylab-lp/" target="_blank" rel="noopener">
+      <span class="ic">💪</span>
+      <span><span class="t">BODY LAB のLP（サブ案件）</span>
+      <span class="d">GitHub Pages｜AIで制作した中目黒パーソナルジムのLP</span></span>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1C23Yg1F46kXt7hpmOF4wHWJMHoEQiBCE" target="_blank" rel="noopener">
+      <span class="ic">🖼️</span>
+      <span><span class="t">BODY LAB バナー全種（Google Drive）</span>
+      <span class="d">AIで量産した広告バナー37枚の原本フォルダ</span></span>
     </a>
   </div>
 </section>
